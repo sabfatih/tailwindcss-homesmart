@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const ToggleTheme = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
@@ -14,12 +15,12 @@ const ToggleTheme = () => {
         theme === "light" ? "bg-white" : "bg-neutral-800"
       }`}
     >
-      {theme === "light" ? <MoonIcon /> : <SunIcon />}
+      {theme === "light" ? <IconMoon /> : <IconSun />}
     </button>
   );
 };
 
-const MoonIcon = () => {
+const IconMoon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +39,7 @@ const MoonIcon = () => {
   );
 };
 
-const SunIcon = () => {
+const IconSun = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
