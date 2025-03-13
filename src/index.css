@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply max-w-[2000px] mx-auto text-neutral-900 dark:text-neutral-200 bg-white dark:bg-neutral-800;
+}
+
+.focused {
+  @apply focus:outline-none focus:shadow-none focus:rounded-sm ring-offset-2 ring-offset-amber-400 focus-visible:ring-4 ring-neutral-900;
+}

@@ -1,7 +1,11 @@
+import Nav from "./components/Nav";
+import ToggleTheme from "./components/ToggleTheme";
+
 function App() {
   return (
     <>
-      <h1 className="text-5xl font-bold ">test</h1>
+      <Nav />
+      <ToggleTheme />
     </>
   );
 }
