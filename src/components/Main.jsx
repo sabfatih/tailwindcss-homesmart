@@ -1,26 +1,50 @@
 import React from "react";
 
+import partner1 from "../assets/partner1.svg";
+import partner2 from "../assets/partner2.svg";
+import partner3 from "../assets/partner3.svg";
+import partner4 from "../assets/partner4.svg";
+import partner5 from "../assets/partner5.svg";
+import partner6 from "../assets/partner6.svg";
+import partner7 from "../assets/partner7.svg";
+
 const Main = () => {
   return (
-    <main className="grid gap-12 sm:gap-16 md:gap-24 lg:gap-32 px-8">
+    <main className="grid gap-12 sm:gap-16 md:gap-24 lg:gap-32 px-10">
       <ButtonDownload />
-      <div className="container flex flex-wrap md:justify-between items-start gap-12 max-w-5xl">
-        <Qualities
+
+      {/* Qualities */}
+      <Qualities>
+        <Quality
           title={"Safe"}
           desc={"Our products are secure and private out-of-the-box"}
-          icon={<IconLock />}
-        />
-        <Qualities
+        >
+          <IconLock />
+        </Quality>
+        <Quality
           title={"Efficient"}
           desc={"Feel good about your wallet and the environment"}
-          icon={<IconBolt />}
-        />
-        <Qualities
+        >
+          <IconBolt />
+        </Quality>
+        <Quality
           title={"Proven"}
           desc={"Leading the Smart Home world for 10 years"}
-          icon={<IconVerified />}
-        />
-      </div>
+        >
+          <IconVerified />
+        </Quality>
+      </Qualities>
+
+      {/* Partners */}
+      <Partners>
+        <Partner>{partner1}</Partner>
+        <Partner>{partner2}</Partner>
+        <Partner>{partner3}</Partner>
+        <Partner>{partner4}</Partner>
+        <Partner>{partner5}</Partner>
+        <Partner>{partner6}</Partner>
+        <Partner>{partner7}</Partner>
+      </Partners>
     </main>
   );
 };
@@ -53,11 +77,19 @@ const IconDownload = () => {
   );
 };
 
-const Qualities = ({ title, desc, icon }) => {
+const Qualities = ({ children }) => {
+  return (
+    <div className="container flex flex-wrap md:justify-between items-start gap-12 max-w-5xl mx-auto">
+      {children}
+    </div>
+  );
+};
+
+const Quality = ({ children, title, desc }) => {
   return (
     <div className="grid gap-4 justify-items-center text-center mx-auto md:flex-1">
-      <div className="rounded-full p-3 ring-4 mx-auto ring-amber-400 bg-white">
-        {icon}
+      <div className="rounded-full p-3 ring-8 mx-auto ring-amber-400 bg-white dark:bg-neutral-800">
+        {children}
       </div>
       <h3 className="font-bold text-2xl">{title}</h3>
       <p>{desc}</p>
@@ -71,7 +103,7 @@ const IconLock = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      strokeWidth={2}
       stroke="currentColor"
       className="size-16 m-auto"
     >
@@ -89,7 +121,7 @@ const IconBolt = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      strokeWidth={2}
       stroke="currentColor"
       className="size-16 m-auto"
     >
@@ -107,7 +139,7 @@ const IconVerified = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      strokeWidth={2}
       stroke="currentColor"
       className="size-16 m-auto"
     >
@@ -117,6 +149,31 @@ const IconVerified = () => {
         d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
       />
     </svg>
+  );
+};
+
+const Partners = ({ children }) => {
+  return (
+    <div className="max-w-lg mx-auto">
+      <div className="flex flex-col gap-4 text-center">
+        <h1 className="font-extrabold text-amber-400 text-4xl">Our Partners</h1>
+        <p>
+          We’ve partnered with hundreds of smart home brands to help you create
+          a smart home that fits your needs and doesn’t lock you in.
+        </p>
+      </div>
+      <div className="flex flex-wrap mt-10 gap-6 justify-center">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const Partner = ({ children }) => {
+  return (
+    <div className="rounded-md p-4 bg-white dark:bg-neutral-600 shadow-md dark:shadow-2xl flex m-auto">
+      <img src={children} className="size-16 text-black dark:text-white" />
+    </div>
   );
 };
 
